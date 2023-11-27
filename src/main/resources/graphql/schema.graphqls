@@ -1,0 +1,13 @@
+directive @oneOf on INPUT_OBJECT
+
+type User {
+  id: ID!
+  name: String!
+}
+input FindUserCondition @oneOf {
+  id: ID
+  nameContaining: String
+}
+type Query {
+  findUser(by: FindUserCondition!): [User!]!
+}
